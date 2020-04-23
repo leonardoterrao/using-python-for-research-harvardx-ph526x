@@ -6,7 +6,7 @@ Created on Thu Apr 23 16:37:26 2020
 @author: leonardo
 """
 
-#3.2.1
+#3.2.1 Introduction to Language Processing
 text =  "This is my test text. We're keeping this text short to keep things manageable."
 
 def count_words(text):
@@ -52,12 +52,12 @@ count_words_fast(text)
 count_words_fast(text) == count_words(text)
 
 
-#Comprehension Check 3.2.2
+#3.2.1 Comprehension Check
 #len(count_words("This comprehension check is to check for comprehension."))
 #count_words(text) is count_words_fast(text)
 
 
-#3.2.3
+#3.2.2 Counting Words
 def read_book(title_path):
     """
     Read a book and return it as a string
@@ -78,7 +78,7 @@ sample_text = text[ind : ind + 1000]
 sample_text
 
 
-#3.2.4
+#3.2.3 Reading in a Book
 def word_stats(word_counts):
     """Return number of unique words and word frequencies"""
     number_unique = len(word_counts)
@@ -101,13 +101,14 @@ word_counts = count_words(text)
 print(number_unique, sum(counts))
 
 
-#3.4.5
-
+#3.4.5 Reading Multiple Files
 import os
 import pandas as pd
 
 book_dir = "./books"
 stats = pd.DataFrame(columns= ("language", "author", "title", "length", "unique"))
+
+
 
 title_num = 1
 for language in os.listdir(book_dir):
@@ -131,3 +132,31 @@ stats.tail()
 #table.loc[2] = "Marcela", 26
 #
 #table.columns
+
+
+#3.4.6 Plotting Book Statistics
+import matplotlib.pyplot as plt
+
+plt.plot(stats.length, stats.unique, "bo")
+plt.loglog(stats.length, stats.unique, "bo")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

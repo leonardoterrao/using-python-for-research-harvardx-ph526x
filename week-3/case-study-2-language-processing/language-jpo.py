@@ -101,18 +101,33 @@ word_counts = count_words(text)
 print(number_unique, sum(counts))
 
 
+#3.4.5
+
+import os
+import pandas as pd
+
+book_dir = "./books"
+stats = pd.DataFrame(columns= ("language", "author", "title", "length", "unique"))
+
+title_num = 1
+for language in os.listdir(book_dir):
+    for author in os.listdir(book_dir + "/" + language):
+        for title in os.listdir(book_dir + "/" + language + "/" + author):
+            inputfile = book_dir + "/" + language + "/" + author + "/" + title
+            print(inputfile)
+            text = read_book(inputfile)
+            (number_unique, counts) = word_stats(count_words_fast(text))
+            stats.loc[title_num] = language, author.capitalize(), title.replace(".txt", ""), sum(counts), number_unique
+            title_num += 1
+
+stats.head()
+stats.tail()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+#import pandas as pd
+#
+#table = pd.DataFrame(columns = ("name", "age"))
+#table.loc[1] = "Leonardo", 28
+#table.loc[2] = "Marcela", 26
+#
+#table.columns
